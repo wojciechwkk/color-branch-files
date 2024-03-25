@@ -14,7 +14,7 @@ class ColorBranchScope : NamedScope(
     IconManager.getInstance().createOffsetIcon(AllIcons.Scope.ChangedFiles),
     object : FilteredPackageSet(NAME) {
         override fun contains(file: VirtualFile, project: Project): Boolean {
-            return GitBranchHelper.isBranchFile(file, project)
+            return GitBranchFiles.INSTANCE.isBranchFile(file, project)
         }
     }) {
 

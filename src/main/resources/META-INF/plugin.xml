@@ -5,7 +5,7 @@
 
     <!-- Public plugin name should be written in Title Case.
          Guidelines: https://plugins.jetbrains.com/docs/marketplace/plugin-overview-page.html#plugin-name -->
-    <name>Package-branch-coloring</name>
+    <name>Package Branch Coloring</name>
 
     <!-- A displayed Vendor name or Organization ID displayed on the Plugins Page. -->
     <vendor email="wkrawczyk@protonmail.com" url="https://www.wkkr.com">WKKR</vendor>
@@ -22,8 +22,14 @@
     <!-- Extension points defined by the plugin.
          Read more: https://plugins.jetbrains.com/docs/intellij/plugin-extension-points.html -->
     <extensions defaultExtensionNs="com.intellij">
+        <projectViewPane implementation="wkkr.plugin.packagebranchcoloring.ColorBranchProjectView"/>
         <customScopesProvider implementation="wkkr.plugin.packagebranchcoloring.ColorBranchCustomScopesProvider"/>
-
+        <fileDocumentManagerListener id="your.implementation.id.here" implementation="wkkr.plugin.packagebranchcoloring.ColorBranchFileManagerListener"/>
     </extensions>
+
+
+    <applicationListeners>
+        <listener class="wkkr.plugin.packagebranchcoloring.RollbackActionListener" topic="com.intellij.openapi.actionSystem.ex.AnActionListener" />
+    </applicationListeners>
 
 </idea-plugin>
